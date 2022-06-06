@@ -1,0 +1,19 @@
+﻿@model FirstWebApp.Models.User
+
+
+@{
+    ViewData["Title"] = "Userdaten ändern";
+}
+
+<h3>Userdaten ändern</h3>
+
+@*
+    asp-controller ... an welchen Controller am Server sollen die Daten gesendet werden
+    asp-action ... an welche Methode (Action) im angeg. Controller sollen
+    die Daten gesendet werden
+*@
+
+<form asp-controller="user" asp-action="changeUserData" method="post">
+    <input type="hidden" asp-for="UserId" />
+    <partial name="_UserForm" data="@Model" />
+</form>

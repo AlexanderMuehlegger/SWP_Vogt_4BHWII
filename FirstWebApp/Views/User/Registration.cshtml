@@ -1,0 +1,27 @@
+﻿@model FirstWebApp.Models.User
+
+
+@{
+    ViewData["Title"] = "Registration";
+}
+
+<h3>Registration</h3>
+
+@* 
+    asp-controller ... an welchen Controller am Server sollen die Daten gesendet werden
+    asp-action ... an welche Methode (Action) im angeg. Controller sollen
+    die Daten gesendet werden
+*@
+
+<form id="formReg" asp-controller="user" asp-action="registration" method="post">
+    <partial name="_UserForm" data="@Model" />
+</form>
+
+<button id="btn-toggle">
+    Formular aus-/einblendn
+</button>
+
+@*wird diese View (Registration.cshtml) aufgerufen, wird die JS-Datei registration.js eingebunden*@
+@section Scripts {
+    <script src="~/js/registration.js" asp-append-version="true"></script>
+}

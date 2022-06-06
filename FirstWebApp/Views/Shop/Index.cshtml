@@ -1,0 +1,83 @@
+﻿@model List<FirstWebApp.Models.Article>
+
+
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>Index</h3>
+
+
+@if ((Model != null) && (Model.Count >= 1))
+{
+
+
+<table>
+
+        <thead>
+            <tr>
+                <td>Artikelnummer</td>
+                <td>Artikelname</td>
+                <td>Hersteller</td>
+                <td>Erscheinungsdatum</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach(Article a in Model)
+                {
+            <tr>
+                <td>@a.ArticleId</td>
+                <td>@a.ArticleName</td>
+                <td>@a.Brand</td>
+                <td>@a.ReleaseDate.ToLongDateString()</td>
+            </tr> 
+                }
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="4">unser Artikelshop</td>
+            </tr>
+        </tfoot>
+    </table>
+            }
+            else
+            {
+                <p>
+                    keine Artikel vorhanden!
+                </p>
+            }
+
+<table>
+
+    <thead>
+        <tr>
+            <td>Artikelnummer</td>
+            <td>Artikelname</td>
+            <td>Hersteller</td>
+            <td>Erscheinungsdatum</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (Article a in Model)
+        {
+            <tr>
+                <td>@a.ArticleId</td>
+                <td>@a.ArticleName</td>
+                <td>@a.Brand</td>
+                <td>@a.ReleaseDate.ToLongDateString()</td>
+            </tr>
+
+        }
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td colspan="4">unser Artikelshop</td>
+        </tr>
+    </tfoot>
+</table>

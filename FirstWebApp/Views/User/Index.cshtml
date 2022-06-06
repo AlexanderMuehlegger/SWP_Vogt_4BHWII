@@ -1,0 +1,79 @@
+﻿    @* 
+    model... Datentyp angeben, der an die View übergeben wurde
+    => für IntelliSense notwendig
+*@
+@model List<FirstWebApp.Models.User>
+
+
+@{
+    ViewData["Title"] = "Benutzer";
+}
+
+@*alle Benutzer in Tabellenform anzeigen*@
+
+@if (Model == null || (Model.Count < 1))
+{
+    <p>
+        Es sind noch keine Benutzer vorhanden!
+    </p>
+
+}
+else
+{
+
+    <table>
+        <thead>
+            <tr>
+                <td colspan="7">Liste aller Benutzer</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ID</td>
+                <td>Benutzername</td>
+                <td>Geburtsdatum</td>
+                <td>Mailadresse</td>
+                <td>Geschlecht</td>
+                <th></th>
+                <th></th>
+            </tr>
+            @foreach(User u in Model) //Model ist die User-Liste
+             {
+
+                <tr>
+                    <td>@u.UserId</td>
+                    <td>@u.Username</td>
+                    <td>@u.Birthdate.ToLongDateString()</td>
+                    <td>@u.EMail</td>
+                    <td>@u.Gender</td>
+                    <td>
+                        @*Variante 1 für UserId*@
+                        <form action="/user/delete/@u.UserId">
+                            <input type="submit" value="löschen" />
+                        </form>
+                    </td>
+                    <td>
+                        @*asp-route- ... der Name dahinter (userId bzw. username)
+        kann frei gewählt werden
+        -> muss aber mit dem Parameternamen der Actionmethode übereinstimmen
+                        *@
+                        @*<form asp-controller="user" asp-action="changeUserData"
+              asp-route-userId="@u.UserId" asp-route-username="@u.Username">
+            <input type="submit" value="ändern" />
+        </form>*@
+                        <form action="/user/changeUserData/@u.UserId">
+                            <input type="submit" value="ändern" />
+                        </form>
+                    </td>
+                </tr>
+
+             }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5">Benutzer bearbeiten</td>
+            </tr>
+        </tfoot>
+    </table>
+
+}

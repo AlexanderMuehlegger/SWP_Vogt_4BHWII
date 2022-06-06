@@ -1,0 +1,25 @@
+﻿@model FirstWebApp.Models.User
+
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h3>Login</h3>
+
+<form asp-controller="user" asp-action="login" method="post">
+    <p>
+        <label asp-for="Username">Benutzername</label><br />
+        <input type="text" asp-for="Username" />
+        <span asp-validation-for="Username"></span>
+    </p>
+    <p>
+        <label asp-for="Password">Passwort</label><br />
+        <input type="password" asp-for="Password" />
+        <span asp-validation-for="Password"></span>
+    </p>
+    <p>
+        <input type="submit" value="absenden" />
+        <input type="reset" value="abbrechen" />
+    </p>
+</form>

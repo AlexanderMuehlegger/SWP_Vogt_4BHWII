@@ -1,0 +1,31 @@
+﻿@model FirstWebApp.Models.Student
+
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    erste View - Homecontroller
+</p>
+
+<div>
+    @if (Model != null)
+    {
+        <p>
+            @Model.StudentId <br />
+            @Model.FirstName <br />
+            @Model.LastName <br />
+            @Model.BirthDate.ToLongDateString() <br />
+        </p>
+    }
+    else
+    {
+        <p>
+            keine Schülerdaten vorhanden!
+        </p>
+    }
+</div>
